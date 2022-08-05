@@ -1,0 +1,11 @@
+[status]
+        showUntrackedFiles = all
+
+[user]
+	name = Devin Mitchell
+	email = devin.a.mitchell@gmail.com
+	signingkey = 51565F4106D91DC1
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
