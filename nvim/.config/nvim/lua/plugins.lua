@@ -41,6 +41,12 @@ vim.cmd([[packadd packer.nvim]])
 		end,
 	})
 
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('git') end, 
+    -- tag = 'release' -- To use the latest release
+  }
+
   use({
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
@@ -67,6 +73,11 @@ vim.cmd([[packadd packer.nvim]])
     config = function()
       require('colorizer').setup()
     end
+  }
+
+  use {
+    'tpope/vim-fugitive',
+    requires = {'tpope/vim-rhubarb'}
   }
 
   use {
