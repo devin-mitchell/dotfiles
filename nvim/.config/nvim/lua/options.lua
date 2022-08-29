@@ -21,6 +21,8 @@ opt.ignorecase = true
 -- search case insensitive until I add a capital letter
 opt.smartcase = true
 opt.modeline = true
+opt.splitbelow = true
+opt.splitright = true
 
 if vim.fn.executable("rg") then
     vim.o.grepprg = "rg --vimgrep --hidden -g !.git"
