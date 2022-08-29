@@ -76,6 +76,17 @@ vim.cmd([[packadd packer.nvim]])
   }
 
   use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use {
     'tpope/vim-fugitive',
     requires = {'tpope/vim-rhubarb'}
   }
@@ -107,7 +118,7 @@ vim.cmd([[packadd packer.nvim]])
 		"folke/tokyonight.nvim",
 		config = function()
 			vim.g.tokyonight_style = "night"
-			-- vim.cmd[[colorscheme tokyonight]]
+		  -- vim.cmd[[colorscheme tokyonight]]
 		end,
 	})
 
