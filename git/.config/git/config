@@ -7,5 +7,16 @@
 	signingkey = 51565F4106D91DC1
 [commit]
 	gpgsign = true
+  verbose = true
 [init]
 	defaultBranch = main
+[blame]
+  date = relative
+[alias] 
+  default-branch = !git remote show origin | rg 'HEAD branch' | cut -d ' ' -f5
+[merge]
+  conflictstyle = diff3
+[diff]
+  algorithm = histogram
+[rebase]
+  autosquash = true
