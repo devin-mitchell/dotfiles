@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="nicoulaj"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,7 +119,7 @@ eval "$(pyenv virtualenv-init -)"
 export FZF_DEFAULT_OPTS="--reverse --ansi --color=fg:15,hl:2,hl+:2,bg+:-1,fg+:-1,pointer:06,spinner:05,info:7,prompt:6"
 
 open_project() {
-  target=$(ls -d ~/.config/* ~/Code/genesis-block/* ~/.local/* ~/Code/personal/* ~/Code/web3/* | fzf)
+  target=$(ls -d ~/.config/* ~/Code/genesis-block/* ~/.local/* ~/Code/personal/* ~/Code/web3/* | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   nvim "+Telescope find_files"
 }
@@ -130,5 +130,9 @@ cd_project() {
   git pull
 }
 
+
+export WEB3_ALCHEMY_API_KEY=hrdYxU7SApMNXoGLt2D9Me_S-Hz9JoE3
+export ETHERSCAN_API_KEY=G2XXD4MGNPCMV9X2E8R5AUJC3KCWTE3I2H
+
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
