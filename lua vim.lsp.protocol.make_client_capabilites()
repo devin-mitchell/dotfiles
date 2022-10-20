@@ -3,19 +3,13 @@ local nvim_lsp = require('lspconfig')
 local formattingGroup = vim.api.nvim_create_augroup('lspFormatting', {}) 
 
 local on_attach = function(client, buffer_number)
-  -- -- if (client.name == 'tsserver') then
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
-
   local options = {buffer = buffer_number}
 
   vim.api.nvim_clear_autocmds({group = formattingGroup, buffer = buffer_number})
   vim.api.nvim_create_autocmd('BufWritePre', { 
     buffer = bufnr, 
     group = formattingGroup, 
-    callback = function() vim.lsp.buf.format({
-      filter = function(client) return client.name ~= 'tsserver' end 
-    }) end
+    callback = function() vim.lsp.buf.formatting_seq_sync() end
   })
 
   vim.keymap.set('n', '<CR>', vim.lsp.buf.definition, options)
@@ -26,8 +20,13 @@ local on_attach = function(client, buffer_number)
   print(vim.inspect(client.server_capabilities))
 end
 
+local tsServerCapabilities = vim.lsp.protocol.make_client_capabilities()
+tsServerCapabilities.document_formatting = false
+print(vim.inspect(tsServerCapabilities))
+
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
+  capabilities = tsServerCapabilites
 })
 require("null-ls").setup({
   sources = {

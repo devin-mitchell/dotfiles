@@ -7,6 +7,13 @@ vim.cmd([[packadd packer.nvim]])
 	return require("packer").startup(function()
   	-- Packer can manage itself
   	use("wbthomason/packer.nvim")
+  
+  use {
+    'vim-test/vim-test',
+    config = function()
+      require("vimTest")
+    end
+  }
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -104,29 +111,70 @@ vim.cmd([[packadd packer.nvim]])
     }
   }
 
+  use 'tpope/vim-commentary'
+
+  use 'vyperlang/vim-vyper' 
+
+  use { 
+    'glacambre/firenvim', 
+    run = function() vim.fn['firenvim#install'](0) end
+    }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+	      'nvim-treesitter/nvim-treesitter-textobjects',
+	      'nvim-treesitter/playground'
+	    },
+	    config = function() require("tree-sitter") end
+	  }
 	-- THEMES
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			vim.g.catppuccin_flavour = "mocha"
-			vim.cmd([[colorscheme catppuccin]])
-		end,
-	})
+  use({
+    "rafamadriz/neon",
+    config = function()
+      vim.g.neon_style = "doom"
+      vim.cmd([[colorscheme neon]])
+    end,
+  })
 
-	use({
-		"folke/tokyonight.nvim",
-		config = function()
-			vim.g.tokyonight_style = "night"
-		  -- vim.cmd[[colorscheme tokyonight]]
-		end,
-	})
+  use({
+    'Yazeed1s/minimal.nvim',
+    config = function()
+      -- vim.cmd([[colorscheme minimal]])
+    end,
+  })
 
-	use({
-		"challenger-deep-theme/vim",
-		as = "challenger_deep",
-		config = function()
-			-- vim.cmd[[colorscheme challenger_deep]]
-		end,
-	})
+  use({
+    'rockerBOO/boo-colorscheme-nvim',
+    config = function()
+     -- vim.cmd([[colorscheme boo]])
+    end,
+  })
+
+   use({
+     "catppuccin/nvim",
+     as = "catppuccin",
+     config = function()
+       vim.g.catppuccin_flavour = "mocha"
+--       vim.cmd([[colorscheme catppuccin]])
+     end,
+   })
+
+   use({
+     "folke/tokyonight.nvim",
+     config = function()
+       require 'tokyonight'.setup({
+         style = 'night'
+       })
+    --   vim.cmd[[colorscheme tokyonight]]
+     end,
+   })
+
+	 use({
+     "challenger-deep-theme/vim",
+     as = "challenger_deep",
+     config = function()
+      -- vim.cmd[[colorscheme challenger_deep]]
+     end,
+   })
 end)
