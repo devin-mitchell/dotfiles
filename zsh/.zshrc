@@ -119,13 +119,13 @@ eval "$(pyenv virtualenv-init -)"
 export FZF_DEFAULT_OPTS="--reverse --ansi --color=fg:15,hl:2,hl+:2,bg+:-1,fg+:-1,pointer:06,spinner:05,info:7,prompt:6"
 
 open_project() {
-  target=$(ls -d ~/.config/* ~/Code/genesis-block/* ~/.local/* ~/Code/personal/* ~/Code/web3/* | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+  target=$(ls -d ~/.config/* ~/.local/* ~/Code/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   nvim "+Telescope find_files"
 }
 
 cd_project() {
-  target=$(ls -d ~/.config/* ~/Code/genesis-block/* ~/.local/* ~/Code/personal/* ~/Code/web3/* | fzf)
+  target=$(ls -d ~/.config/* ~/.local/* ~/Code/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   git pull
 }

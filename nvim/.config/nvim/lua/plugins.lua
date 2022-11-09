@@ -128,6 +128,7 @@ vim.cmd([[packadd packer.nvim]])
 	    },
 	    config = function() require("tree-sitter") end
 	  }
+
 	-- THEMES
   use({
     "rafamadriz/neon",
