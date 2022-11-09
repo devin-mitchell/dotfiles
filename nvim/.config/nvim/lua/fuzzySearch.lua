@@ -4,6 +4,7 @@ vim.keymap.set('n', '<leader><leader>', telescope.find_files)
 vim.keymap.set('n', '<leader>f<bs>', telescope.buffers)
 vim.keymap.set('n', '<leader>fs', telescope.live_grep)
 vim.keymap.set('n', '<leader>fg', telescope.git_status)
+vim.keymap.set('n', '<leader>fh', function() telescope.find_files({no_ignore = true}) end)
 
 require('telescope').setup{
     defaults = {
