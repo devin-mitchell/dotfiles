@@ -2,6 +2,7 @@ require 'nvim-treesitter.configs'.setup{
   ensure_installed = {
     'javascript',
     'typescript',
+    'css',
     'tsx',
     'lua',
     'elixir',
