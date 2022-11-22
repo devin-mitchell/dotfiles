@@ -119,13 +119,13 @@ eval "$(pyenv virtualenv-init -)"
 export FZF_DEFAULT_OPTS="--reverse --ansi --color=fg:15,hl:2,hl+:2,bg+:-1,fg+:-1,pointer:06,spinner:05,info:7,prompt:6"
 
 open_project() {
-  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/QueryDesk/* ~/Code/underscore/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/* ~/Code/underscore/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   nvim "+Telescope find_files"
 }
 
 cd_project() {
-  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/QueryDesk/* ~/Code/underscore/*  /king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/* ~/Code/underscore/*  /king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   git pull
 }
@@ -136,3 +136,7 @@ export ETHERSCAN_API_KEY=G2XXD4MGNPCMV9X2E8R5AUJC3KCWTE3I2H
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# Direnv hook
+eval "$(direnv hook zsh)"
+
