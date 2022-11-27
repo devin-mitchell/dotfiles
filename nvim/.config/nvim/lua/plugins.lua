@@ -113,6 +113,8 @@ vim.cmd([[packadd packer.nvim]])
 
   use 'tpope/vim-commentary'
 
+  use 'tpope/vim-endwise'
+
   use 'vyperlang/vim-vyper' 
 
   use { 

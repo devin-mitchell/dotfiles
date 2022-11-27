@@ -29,6 +29,7 @@ end
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
 })
+
 require("null-ls").setup({
   sources = {
       require("null-ls").builtins.formatting.prettier,
@@ -37,5 +38,10 @@ require("null-ls").setup({
   },
 
 })
+
+nvim_lsp.elixirls.setup{
+    on_attach = on_attach,
+    cmd = { "/Users/devinmitchell/.local/share/elixir-ls/rel/language_server.sh" }
+}
 
 
