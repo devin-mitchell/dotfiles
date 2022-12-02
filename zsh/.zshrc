@@ -118,6 +118,9 @@ eval "$(pyenv virtualenv-init -)"
 
 export FZF_DEFAULT_OPTS="--reverse --ansi --color=fg:15,hl:2,hl+:2,bg+:-1,fg+:-1,pointer:06,spinner:05,info:7,prompt:6"
 
+# Erlang shell history
+export ERL_AFLAGS="-kernel shell_history enabled" 
+
 open_project() {
   target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/* ~/Code/underscore/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
