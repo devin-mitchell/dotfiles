@@ -3,19 +3,17 @@ local nvim_lsp = require('lspconfig')
 local formattingGroup = vim.api.nvim_create_augroup('lspFormatting', {}) 
 
 local on_attach = function(client, buffer_number)
-  -- -- if (client.name == 'tsserver') then
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
+   if (client.name == 'tsserver') then
+    client.server_capabilities.documentFormattingProvider = false
+   end
 
   local options = {buffer = buffer_number}
 
   vim.api.nvim_clear_autocmds({group = formattingGroup, buffer = buffer_number})
   vim.api.nvim_create_autocmd('BufWritePre', { 
-    buffer = bufnr, 
+    buffer = buffer_number, 
     group = formattingGroup, 
-    callback = function() vim.lsp.buf.format({
-      filter = function(client) return client.name ~= 'tsserver' end 
-    }) end
+    callback = function() vim.lsp.buf.format() end
   })
 
   vim.keymap.set('n', '<CR>', vim.lsp.buf.definition, options)
@@ -26,11 +24,12 @@ local on_attach = function(client, buffer_number)
   print(vim.inspect(client.server_capabilities))
 end
 
-nvim_lsp.tsserver.setup({
-  on_attach = on_attach,
-})
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach
+}
 
 require("null-ls").setup({
+  on_attach = on_attach,
   sources = {
       require("null-ls").builtins.formatting.prettier,
       require("null-ls").builtins.diagnostics.eslint, 
@@ -43,5 +42,4 @@ nvim_lsp.elixirls.setup{
     on_attach = on_attach,
     cmd = { "/Users/devinmitchell/.local/share/elixir-ls/rel/language_server.sh" }
 }
-
 
