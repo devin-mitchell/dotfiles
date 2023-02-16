@@ -65,6 +65,7 @@ return require("packer").startup(function()
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
+	-- ELIXIR
 	use({
 		"elixir-editors/vim-elixir",
 	})
@@ -139,7 +140,18 @@ return require("packer").startup(function()
 		end,
 	})
 
+	-- GOLANG
+	use("fatih/vim-go") -- https://github.com/fatih/vim-go
+
 	-- THEMES
+
+	use({
+		"Yazeed1s/oh-lucy.nvim",
+		config = function()
+			--	vim.cmd([[colorscheme oh-lucy-evening]])
+		end,
+	})
+
 	use({
 		"rafamadriz/neon",
 		config = function()
