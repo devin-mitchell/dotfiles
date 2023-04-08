@@ -143,3 +143,5 @@ export ETHERSCAN_API_KEY=G2XXD4MGNPCMV9X2E8R5AUJC3KCWTE3I2H
 # Direnv hook
 eval "$(direnv hook zsh)"
 
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)

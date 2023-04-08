@@ -146,6 +146,13 @@ return require("packer").startup(function()
 	-- THEMES
 
 	use({
+		"skbolton/carbide",
+		config = function()
+			-- vim.cmd.colorscheme("carbide")
+		end,
+	})
+
+	use({
 		"Yazeed1s/oh-lucy.nvim",
 		config = function()
 			--	vim.cmd([[colorscheme oh-lucy-evening]])
