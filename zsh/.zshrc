@@ -101,6 +101,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cbb="docker-compose down; docker-compose up -d --build backend"
+alias otp="zsh ~/dotfiles/otp" 
+
+alias jc-rotate='aws-jumpcloud rotate'
+jc-export() {
+    eval `aws-jumpcloud export "$1"`
+}
+jc-apply() {
+    jc-rotate "$1"; jc-export "$1"
+}
 
 . $HOME/.asdf/asdf.sh
 export GPG_TTY=$(tty)
@@ -122,13 +132,13 @@ export FZF_DEFAULT_OPTS="--reverse --ansi --color=fg:15,hl:2,hl+:2,bg+:-1,fg+:-1
 export ERL_AFLAGS="-kernel shell_history enabled" 
 
 open_project() {
-  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/* ~/Code/underscore/*  ~/king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+  target=$(ls -d ~/.config/* ~/.local/* ~/code/custodia/* ~/code/personal/* ~/dotfiles | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   nvim "+Telescope find_files"
 }
 
 cd_project() {
-  target=$(ls -d ~/.config/* ~/.local/* ~/Code/genesis-block/* ~/Code/web3/* ~/Code/personal/* ~/Code/query_desk/* ~/Code/underscore/*  /king_files | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
+  target=$(ls -d ~/.config/* ~/.local/*  ~/code/custodia/* ~/code/personal/*  ~/dotfiles | fzf --preview "exa --tree --icons --level 3 --git-ignore {}")
   cd $target
   git pull
 }
@@ -145,3 +155,4 @@ eval "$(direnv hook zsh)"
 
 export PATH=$PATH:$(go env GOPATH)/bin
 export GOPATH=$(go env GOPATH)
+
