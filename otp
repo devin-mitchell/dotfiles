@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+echo "running $1..."
+
+case $1 in
+  ob) 
+    code=$(node code/custodia/avanti-main/web/apps/online-banking/.online_banking_OTP.ts);;
+
+  onboarding)
+    code=$(node code/custodia/avanti-main/web/apps/onboarding/.onboarding_OTP.ts);;
+
+  *)
+    echo 'ob or onboarding'
+esac
+
+echo "$code"
