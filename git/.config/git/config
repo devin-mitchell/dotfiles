@@ -1,10 +1,9 @@
 [status]
         showUntrackedFiles = all
-
 [user]
-	name = Devin Mitchell
+	name = devin-mitchell 
 	email = devin.a.mitchell@gmail.com
-	signingkey = 51565F4106D91DC1
+	signingkey = D7231741DC3C56D1
 [commit]
 	gpgsign = true
   verbose = true
@@ -25,3 +24,8 @@
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
     
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

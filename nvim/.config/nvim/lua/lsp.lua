@@ -33,6 +33,10 @@ nvim_lsp.tsserver.setup({
 	on_attach = on_attach,
 })
 
+nvim_lsp.pyright.setup({
+	on_attach = on_attach,
+})
+
 require("null-ls").setup({
 	on_attach = on_attach,
 	sources = {
